@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang ="es" ng-app="moduleApp" ng-controller="moduleCtrl as vm">
+	<head>
+		<meta charset="UTF-8">
+		<title>hola mundo en angular</title>
+	</head>
+	<body>
+		<input type="text" ng-model="vm.campotexto">
+		<ul>
+			<li ng-repeat="actualpalabra in vm.textos">
+				{{actualpalabra | lowercase}}
+			</li>
+		</ul>
+		
+		
+		<input type="button" ng-click="vm.agregarTexto()" value="pulse aqui para agregar texto">
+		
+		
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+		
+		<!--Modelo y controlador -->
+		<script>
+			var moduleApp = angular.module("moduleApp",[]);
+			moduleApp.controller("moduleCtrl", function(){
+				var vm = this;
+				vm.campotexto = "Abrilchis";
+				
+				vm.textos = [];
+				
+				<!--Funcion al hacer clic-->
+				vm.agregarTexto = function(){
+					vm.textos.push(vm.campotexto);
+				}
+			});
+		</script>
+		
+	</body>
+</html>

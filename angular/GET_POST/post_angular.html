@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="customersCtrl">
+
+		<p>{{languages}}</p>
+		<form>
+			<input type="text" name="nombre" ng-model="addvalor">
+			<button ng-click="save()">guardar</button>
+		</form>
+
+		<p>Dato: {{addvalor}}</p>
+		<p>Dato guardado: {{ datos }}</p>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('customersCtrl', function($scope, $http, $log) {
+			var obj = {
+				table: []
+			};
+
+			$scope.datos = obj.table.push({id: 5, fruta: "mandarina"});
+			var json = JSON.stringify(obj);
+			//document.write(json);
+			//fs.writeFile('data_base_Post.json', json, 'utf8', callback);
+			
+			/*$http.post("changer.php",{Nombre:"Andrea"}).success(function(respuesta){
+				console.log(respuesta);
+			});	*/
+
+		});
+	</script>
+
+</body>
+</html>

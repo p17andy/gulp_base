@@ -1,0 +1,52 @@
+// variabales NWT COL
+// @andrearomero
+// Create padding and margins
+//
+// --------------------------------------------------
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+@tamanos: xs, sm, md, lg, xl; //Referentes de tamanos para las clases
+@n-tam: length(@tamanos); //4
+@posicion: top,bottom,left,right; //posicion donde se aplica las clases
+@n-posic: length(@posicion);
+
+//cuenta y recorre el numero de @tamanos 
+.count-tamano(@n-tam, @i:1) when (@i =< @n-tam) {
+  
+  
+  //cuenta y recorre el numero de @posicion en el que se hara margin o padding
+  .count-posicion(@n-posic, @j:1) when (@j =< @n-posic){
+    @tam: extract(@tamanos,@i); //recorre el array @tamanos
+    @pos: extract(@posicion,@j); //recorre el array @posicion
+    
+     //create classes: margin-top-xs ...margin-right-lg
+    .margin-@{pos}-@{tam}{
+    	margin-@{pos}:10px *@i;
+    	@media screen and (max-width: @screen-tablet) {
+    		margin-@{pos}:0px;
+    		}
+    	}
+
+     //create classes: padding-top-xs...padding-right-lg
+    .padding-@{pos}-@{tam}{
+    	padding-@{pos}:10px * @i;
+    	@media screen and (max-width: @screen-tablet) {
+    		padding-@{pos}:0px;    		
+    	}
+    }
+  
+    .count-posicion(@n-posic, (@j+1));//j++
+  }
+
+  .count-posicion(@n-posic);//ejecutar css position   
+  .count-tamano(@n-tam, (@i+1)); //i++
+}
+
+.count-tamano(@n-tam);
+
+//Otras clases
+.border-0 {border:none;}
+.margin-0 {margin: 0px;}
+.padding-0 {padding:0px;}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang ="es" ng-app>
+	<head>
+		<meta charset="UTF-8">
+		<title>hola mundo en angular</title>
+	</head>
+	<body>
+		<input type="text" ng-model="campotexto">
+		<p>{{campotexto}} - {{camposelect}}</p>
+		<select ng-model="camposelect">
+			<option value="um">Um</option>
+			<option value="dois">Dois</option>
+			<option value="tres">Tres</option>
+		</select>
+		<input type="button" ng-click="campotexto='andrea'" value="pulse aqui">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+	</body>
+</html>

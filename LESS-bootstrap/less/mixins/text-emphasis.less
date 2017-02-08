@@ -1,0 +1,10 @@
+// Typography
+
+.text-emphasis-variant(@color) {
+  color: @color;
+  a{color:@brand-info;}
+  a&:hover,
+  a&:focus {
+    color: lighten(@brand-info, 10%);
+  }
+}

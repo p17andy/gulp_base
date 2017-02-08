@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang ="es" ng-app="moduleApp" ng-controller="appCtrl as vm">
+	<head>
+		<meta charset="UTF-8">
+		<title>hola mundo en angular</title>
+	</head>
+	<body>
+		<input type="text" ng-model="vm.campotexto">
+		<p>{{vm.campotexto}} - {{vm.camposelect}}</p>
+		
+		
+		<select ng-model="vm.camposelect">
+			<option value="um">Um</option>
+			<option value="dois">Dois</option>
+			<option value="tres">Tres</option>
+		</select>
+		
+		<input type="button" ng-click="vm.cambiarTexto()" value="pulse aqui">
+		
+		
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+		
+		<!--Modelo y controlador -->
+		<script>
+			var moduleApp = angular.module("moduleApp",[]);
+			moduleApp.controller("appCtrl", function(){
+				var vm = this;
+				vm.camposelect = "um";
+				vm.campotexto = "Abrilchis";
+				
+				<!--Funcion al hacer clic-->
+				vm.cambiarTexto = function(){
+					vm.campotexto="Andrea";
+				}
+			});
+		</script>
+		
+	</body>
+</html>

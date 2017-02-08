@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+
+	<div ng-app="myApp" ng-controller="customersCtrl">
+
+		<table>
+			<tr>
+				<th>Nombre</th>
+				<th>Ciudad</th>
+				<th>País</th>
+			</tr>
+			<tr ng-repeat="x in names">
+				<td>{{ x.Name }}</td>
+				<td>{{ x.City }}</td>
+				<td>{{ x.Country }}</td>
+				
+			</tr>
+		</table>
+		
+		<p>Primer nombre: {{FirstName}}</p>
+		<p>Ultimo País: {{LastCountry}}</p>
+		
+		<p>Error: {{error}}</p>
+
+
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('customersCtrl', function($scope, $http, $log) {
+			$http.get("data_base.json")
+			.then(function (response) {
+				
+				$scope.names = response.data.records;
+
+				//Trae el primer nombre y la ciudad del json
+				$scope.FirstName = response.data.records[0].Name;			
+				$scope.LastCountry = response.data.records[0].Country;
+
+				//Informacion en consola del request 
+				$log.info(response);
+			},function(reason){
+				//Razon de errores del request 
+				$scope.error= reason.data;
+				$log.info(reason);
+
+			});		
+			
+		});
+	</script>
+
+</body>
+</html>
